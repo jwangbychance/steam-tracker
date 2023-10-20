@@ -6,9 +6,9 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ playerData }) => {
   return (
-    <div className="flex items-center sticky top-0 w-full bg-[#171A21] text-white p-3 font-semibold mb-5">
-      <div className="mr-auto">Steam Tracker</div>
-      <div className="flex items-center gap-3">
+    <div className="flex items-center sticky top-0 w-full bg-[#212121] p-3 font-semibold mb-5">
+      <div className="mr-auto text-[#E0E0E0]">Steam Tracker</div>
+      <div className="flex items-center gap-3 border rounded-full px-3 py-1 border-[#BD87F9] bg-[#BD87F9] text-sm">
         <img src={playerData?.avatar} className="rounded-full" />
         <div>{playerData?.personaname}</div>
       </div>

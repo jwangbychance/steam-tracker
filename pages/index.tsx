@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="font-open-sans relative h-screen">
+    <div className="font-inter relative h-screen bg-[#424242]">
       <Head>
         <title>Steam Tracker</title>
         <link rel="icon" href="/favicon.ico" />

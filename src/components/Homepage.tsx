@@ -1,4 +1,5 @@
 import { ISteamGame } from "../interfaces/ISteamGame";
+import GameCardLayout from "./GameCardLayout";
 
 interface HomepageProps {
   gamesData: ISteamGame[];
@@ -6,21 +7,20 @@ interface HomepageProps {
 
 const Homepage: React.FC<HomepageProps> = ({ gamesData }) => {
   return (
-    <main className="px-3 flex flex-col text-[#E0E0E0]">
+    <main className="mx-6 px-3 flex flex-col text-[#E0E0E0]">
       <div className="mb-8">
-        <div className="border border-[#BD87F9] bg-[#BD87F9] w-fit rounded-full px-3 py-1 text-black font-semibold">
+        <div className="w-fit rounded-md font-semibold mb-4">
           Recently Played Games
         </div>
         {gamesData ? (
-          gamesData.map((game) => <div>{game.name}</div>)
+          <GameCardLayout gamesData={gamesData} />
         ) : (
           <div>Loading...</div>
         )}
+        <div className="flex justify-end">View more games (WIP)</div>
       </div>
       <div className="mb-8">
-        <div className="border border-[#BD87F9] bg-[#BD87F9] w-fit rounded-full px-3 py-1 text-black font-semibold">
-          Achievements
-        </div>
+        <div className="w-fit font-semibold mb-4">Achievements</div>
         <div>Achievements...</div>
       </div>
     </main>

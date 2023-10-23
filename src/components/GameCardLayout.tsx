@@ -14,10 +14,12 @@ interface GameCardLayoutProps {
 const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
   return (
     <div className="p-3 border border-gray-300 rounded-md w-[250px] h-[260px]">
-      {gameData.name}
-      <img
-        src={`http://media.steampowered.com/steamcommunity/public/images/apps/${gameData.appid}/${gameData.img_icon_url}.jpg`}
-      />
+      <div className="flex items-center gap-3 mb-2">
+        <img
+          src={`http://media.steampowered.com/steamcommunity/public/images/apps/${gameData.appid}/${gameData.img_icon_url}.jpg`}
+        />
+        <div className="font-semibold truncate">{gameData.name}</div>
+      </div>
       <div>
         2 weeks playtime: {(gameData.playtime_2weeks / 60).toFixed(2)} hrs
       </div>

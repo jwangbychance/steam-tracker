@@ -17,7 +17,7 @@ const Homepage: React.FC<HomepageProps> = ({ gamesData }) => {
         ) : (
           <div>Loading...</div>
         )}
-        <div className="flex justify-end">View more games (WIP)</div>
+        {/* <div className="flex justify-end">View more games (WIP)</div> */}
       </div>
       <div className="mb-8">
         <div className="w-fit font-semibold mb-4">Achievements</div>

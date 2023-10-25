@@ -12,6 +12,10 @@ interface GameCardLayoutProps {
 }
 
 const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
+  const displayPlaytimeHours = (playtime: number) => {
+    return !isNaN(playtime) ? (playtime / 60).toFixed(2) : 0;
+  };
+
   return (
     <div className="p-3 border border-gray-300/50 rounded-md w-[250px] h-[260px]">
       <div className="flex items-center gap-3 mb-5">
@@ -30,17 +34,17 @@ const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
       <div className="border border-[#212121] my-5" />
       <div className="flex items-center gap-3">
         <WindowsOS />
-        playtime: {(gameData.playtime_windows_forever / 60).toFixed(2)} hrs
+        playtime: {displayPlaytimeHours(gameData.playtime_windows_forever)} hrs
       </div>
       <div className="flex items-center gap-2">
         <div className="w-5">
           <LinuxOS />
         </div>
-        playtime: {(gameData.playtime_linux_forever / 60).toFixed(2)} hrs
+        playtime: {displayPlaytimeHours(gameData.playtime_linux_forever)} hrs
       </div>
       <div className="flex items-center gap-3">
         <MacOS />
-        playtime: {(gameData.playtime_mac_forever / 60).toFixed(2)} hrs
+        playtime: {displayPlaytimeHours(gameData.playtime_mac_forever)} hrs
       </div>
     </div>
   );

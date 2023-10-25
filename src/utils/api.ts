@@ -3,9 +3,11 @@ import { ISteamUser } from "../interfaces/ISteamUser";
 import { ISteamGame } from "../interfaces/ISteamGame";
 import { ISteamAchievements } from "../interfaces/ISteamAchievements";
 
-export const fetchUserData = async () => {
+export const fetchUserData = async (steamId: string) => {
   try {
-    const response = await axios.get("/api/steamUserSummary");
+    const response = await axios.get("/api/steamUserSummary", {
+      params: { steamId },
+    });
     const userData: ISteamUser = response.data.response.players[0];
     return userData;
   } catch (err: unknown) {
@@ -13,9 +15,11 @@ export const fetchUserData = async () => {
   }
 };
 
-export const fetchGamesData = async () => {
+export const fetchGamesData = async (steamId: string) => {
   try {
-    const response = await axios.get("/api/steamRecentGames");
+    const response = await axios.get("/api/steamRecentGames", {
+      params: { steamId },
+    });
     const gamesData: ISteamGame[] = response.data.response.games;
     return gamesData;
   } catch (err: unknown) {

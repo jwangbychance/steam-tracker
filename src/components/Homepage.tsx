@@ -29,7 +29,7 @@ const Homepage: React.FC<HomepageProps> = ({ gamesData, achievementsData }) => {
           <div className="bg-white/30 w-[250px] h-[260px]  rounded-md shadow-lg select-none animate-pulse" />
         )}
       </div>
-      <button className="text-black font-semibold sticky bottom-12 z-10 self-end mr-8 rounded-full bg-[#BC88F8] px-5 py-1">
+      <button className="text-black font-semibold sticky bottom-12 z-10 self-end mr-8 rounded-full bg-[#BC88F8] px-5 py-2">
         Friends
       </button>
     </main>

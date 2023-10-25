@@ -21,24 +21,6 @@ export default function Home() {
   }>(null);
 
   useEffect(() => {
-    fetchUserData()
-      .then((data) => {
-        setPlayerData(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-
-    fetchGamesData()
-      .then((data) => {
-        setGamesData(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
-  useEffect(() => {
     if (gamesData) {
       gamesData.map((gameData) => {
         fetchUserAchievements(gameData.appid)
@@ -55,6 +37,26 @@ export default function Home() {
     }
   }, [gamesData]);
 
+  const getUserSteamData = (userSteamId: string) => {
+    fetchUserData(userSteamId)
+      .then((data) => {
+        setPlayerData(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const getUserSteamRecentGames = (userSteamId: string) => {
+    fetchGamesData(userSteamId)
+      .then((data) => {
+        setGamesData(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className="font-inter relative h-full bg-[#424242]">
       <Head>
@@ -62,7 +64,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar playerData={playerData} />
+      <Navbar
+        playerData={playerData}
+        getUserSteamData={getUserSteamData}
+        getUserSteamRecentGames={getUserSteamRecentGames}
+      />
 
       <Homepage gamesData={gamesData} achievementsData={achievementsData} />
 

@@ -13,12 +13,13 @@ interface GameCardLayoutProps {
 
 const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
   return (
-    <div className="p-3 border border-gray-300 rounded-md w-[250px] h-[260px]">
-      <div className="flex items-center gap-3 mb-2">
+    <div className="p-3 border border-gray-300/50 rounded-md w-[250px] h-[260px]">
+      <div className="flex items-center gap-3 mb-5">
         <img
           src={`http://media.steampowered.com/steamcommunity/public/images/apps/${gameData.appid}/${gameData.img_icon_url}.jpg`}
+          className="rounded-sm"
         />
-        <div className="font-semibold truncate">{gameData.name}</div>
+        <div className="underline truncate">{gameData.name}</div>
       </div>
       <div>
         2 weeks playtime: {(gameData.playtime_2weeks / 60).toFixed(2)} hrs
@@ -47,8 +48,8 @@ const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
 
 const GameCardLayout: React.FC<GameCardLayoutProps> = ({ gamesData }) => {
   return (
-    <div className="overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-      <div className="inline-flex gap-8">
+    <div className="overflow-x-auto">
+      <div className="inline-flex gap-8 mb-3">
         {gamesData.map((game) => (
           <GameCard gameData={game} key={game.appid} />
         ))}

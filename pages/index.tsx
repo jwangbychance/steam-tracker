@@ -24,10 +24,11 @@ export default function Home() {
 
   useEffect(() => {
     if (prevPlayerData !== playerData?.steamid) {
-      console.log("achievement data reset");
       setAchievementsData(null);
     }
+  }, [playerData?.steamid]);
 
+  useEffect(() => {
     if (gamesData) {
       gamesData.map((gameData) => {
         fetchUserAchievements(gameData.appid)

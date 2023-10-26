@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({
       <label className="flex gap-2 items-center text-[#E0E0E0] font-normal mr-auto text-sm border border-[#E0E0E0]/30 pl-3 rounded-full">
         <input
           placeholder="Search Steam ID"
-          className="bg-[#212121]"
+          className="bg-[#212121] outline-none"
           value={userSteamId}
           onChange={(e) => setUserSteamId(e.target.value)}
           onKeyDown={handleEnterKeySearch}

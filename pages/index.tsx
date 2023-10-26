@@ -12,6 +12,7 @@ import Navbar from "../src/components/Navbar";
 import { ISteamUser } from "../src/interfaces/ISteamUser";
 import { ISteamGame } from "../src/interfaces/ISteamGame";
 import { ISteamAchievements } from "../src/interfaces/ISteamAchievements";
+import usePrevious from "../src/hooks/usePrevious";
 
 export default function Home() {
   const [playerData, setPlayerData] = useState<ISteamUser>(null);
@@ -19,8 +20,14 @@ export default function Home() {
   const [achievementsData, setAchievementsData] = useState<{
     [name: string]: ISteamAchievements;
   }>(null);
+  const prevPlayerData = usePrevious(playerData?.steamid);
 
   useEffect(() => {
+    if (prevPlayerData !== playerData?.steamid) {
+      console.log("achievement data reset");
+      setAchievementsData(null);
+    }
+
     if (gamesData) {
       gamesData.map((gameData) => {
         fetchUserAchievements(gameData.appid)

@@ -29,40 +29,54 @@ export default function Home() {
   }, [playerData?.steamid]);
 
   useEffect(() => {
-    if (gamesData) {
-      gamesData.map((gameData) => {
-        fetchUserAchievements(gameData.appid)
-          .then((data) => {
-            setAchievementsData((prev) => ({
-              ...prev,
-              [gameData.name]: data,
-            }));
-          })
-          .catch((err) => {
-            console.error(err);
+    const fetchAchievementsData = async () => {
+      if (gamesData) {
+        try {
+          const dataPromises = gamesData.map(async (gameData) => {
+            try {
+              const data = await fetchUserAchievements(gameData.appid);
+              return [gameData.name, data];
+            } catch (err: unknown) {
+              console.error(err);
+              return [gameData.name, null];
+            }
           });
-      });
-    }
+
+          const dataResults = (await Promise.allSettled(dataPromises)) as {
+            status: "fulfilled" | "rejected";
+            value: ISteamAchievements[];
+          }[];
+
+          const fulfilledResults = dataResults
+            .filter((result) => result.status === "fulfilled")
+            .map((data) => data.value);
+          console.log(Object.fromEntries(fulfilledResults));
+          setAchievementsData(Object.fromEntries(fulfilledResults));
+        } catch (err: unknown) {
+          console.error(err);
+        }
+      }
+    };
+
+    fetchAchievementsData();
   }, [gamesData]);
 
-  const getUserSteamData = (userSteamId: string) => {
-    fetchUserData(userSteamId)
-      .then((data) => {
-        setPlayerData(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const getUserSteamData = async (userSteamId: string) => {
+    try {
+      const playerData = await fetchUserData(userSteamId);
+      setPlayerData(playerData);
+    } catch (err: unknown) {
+      console.error(err);
+    }
   };
 
-  const getUserSteamRecentGames = (userSteamId: string) => {
-    fetchGamesData(userSteamId)
-      .then((data) => {
-        setGamesData(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const getUserSteamRecentGames = async (userSteamId: string) => {
+    try {
+      const gameData = await fetchGamesData(userSteamId);
+      setGamesData(gameData);
+    } catch (err: unknown) {
+      console.error(err);
+    }
   };
 
   return (

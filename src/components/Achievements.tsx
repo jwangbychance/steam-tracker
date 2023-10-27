@@ -13,11 +13,11 @@ const Achievement: React.FC<Achievement> = ({ gameTitle, achievements }) => {
   return (
     <div className="flex-col min-w-[250px] border border-gray-300/50 p-3 rounded-md h-fit">
       <div className="underline">
-        {gameTitle} ({achievements.length})
+        {gameTitle} ({Array.isArray(achievements) ? achievements.length : "0"})
       </div>
       {achievements ? (
-        achievements.map((achievement) => (
-          <div key={achievement.name}>{achievement.name}</div>
+        achievements.map((achievement, i) => (
+          <div key={i}>{achievement.name}</div>
         ))
       ) : (
         <div>No achievements</div>

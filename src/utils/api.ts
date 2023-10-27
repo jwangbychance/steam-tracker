@@ -2,6 +2,7 @@ import axios from "axios";
 import { ISteamUser } from "../interfaces/ISteamUser";
 import { ISteamGame } from "../interfaces/ISteamGame";
 import { ISteamAchievements } from "../interfaces/ISteamAchievements";
+import { ISteamFriends } from "../interfaces/ISteamFriends";
 
 export const fetchUserData = async (steamId: string) => {
   try {
@@ -34,6 +35,18 @@ export const fetchUserAchievements = async (appId: number) => {
     });
     const achievementsData: ISteamAchievements = response.data;
     return achievementsData;
+  } catch (err: unknown) {
+    throw err;
+  }
+};
+
+export const fetchUserFriends = async (steamId: string) => {
+  try {
+    const response = await axios.get("/api/steamUserFriends", {
+      params: { steamId },
+    });
+    const friendsData: ISteamFriends[] = response.data.friendslist.friends;
+    return friendsData;
   } catch (err: unknown) {
     throw err;
   }

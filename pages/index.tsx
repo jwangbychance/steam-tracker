@@ -5,6 +5,7 @@ import {
   fetchUserData,
   fetchGamesData,
   fetchUserAchievements,
+  fetchUserFriends,
 } from "../src/utils/api";
 import Homepage from "../src/components/Homepage";
 import Footer from "../src/components/Footer";
@@ -13,6 +14,8 @@ import { ISteamUser } from "../src/interfaces/ISteamUser";
 import { ISteamGame } from "../src/interfaces/ISteamGame";
 import { ISteamAchievements } from "../src/interfaces/ISteamAchievements";
 import usePrevious from "../src/hooks/usePrevious";
+import Friends from "../src/components/Friends";
+import { ISteamFriends } from "../src/interfaces/ISteamFriends";
 
 export default function Home() {
   const [playerData, setPlayerData] = useState<ISteamUser>(null);
@@ -20,11 +23,21 @@ export default function Home() {
   const [achievementsData, setAchievementsData] = useState<{
     [name: string]: ISteamAchievements;
   }>(null);
+  const [friendsData, setFriendsData] = useState<ISteamFriends[]>(null);
   const prevPlayerData = usePrevious(playerData?.steamid);
 
   useEffect(() => {
     if (prevPlayerData !== playerData?.steamid) {
       setAchievementsData(null);
+      const fetchFriendsData = async () => {
+        try {
+          const friendsData = await fetchUserFriends(playerData?.steamid);
+          setFriendsData(friendsData);
+        } catch (err: unknown) {
+          console.error(err);
+        }
+      };
+      fetchFriendsData();
     }
   }, [playerData?.steamid]);
 
@@ -50,7 +63,7 @@ export default function Home() {
           const fulfilledResults = dataResults
             .filter((result) => result.status === "fulfilled")
             .map((data) => data.value);
-          console.log(Object.fromEntries(fulfilledResults));
+
           setAchievementsData(Object.fromEntries(fulfilledResults));
         } catch (err: unknown) {
           console.error(err);
@@ -94,9 +107,7 @@ export default function Home() {
 
       <Homepage gamesData={gamesData} achievementsData={achievementsData} />
 
-      <button className="text-black font-semibold fixed bottom-10 right-10 z-10 rounded-full bg-[#BC88F8] px-5 py-2">
-        Friends
-      </button>
+      <Friends />
 
       <Footer />
     </div>

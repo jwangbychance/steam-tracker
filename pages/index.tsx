@@ -80,7 +80,7 @@ export default function Home() {
   };
 
   return (
-    <div className="font-inter relative h-full bg-[#424242]">
+    <div className="font-inter relative h-full bg-[#424242] w-full">
       <Head>
         <title>Steam Tracker</title>
         <link rel="icon" href="/favicon.ico" />
@@ -93,6 +93,10 @@ export default function Home() {
       />
 
       <Homepage gamesData={gamesData} achievementsData={achievementsData} />
+
+      <button className="text-black font-semibold fixed bottom-10 right-10 z-10 rounded-full bg-[#BC88F8] px-5 py-2">
+        Friends
+      </button>
 
       <Footer />
     </div>

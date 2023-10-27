@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <div className="flex items-center sticky top-0 w-full bg-[#212121] p-3 font-semibold mb-5">
+    <div className="flex z-10 items-center sticky top-0 w-full bg-[#212121] p-3 font-semibold mb-5">
       <div className="mr-auto text-[#E0E0E0]">Steam Tracker</div>
       <label className="flex gap-2 items-center text-[#E0E0E0] font-normal mr-auto text-sm border border-[#E0E0E0]/30 pl-3 rounded-full">
         <input

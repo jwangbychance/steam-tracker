@@ -107,7 +107,7 @@ export default function Home() {
 
       <Homepage gamesData={gamesData} achievementsData={achievementsData} />
 
-      {playerData && (
+      {friendsData && friendsData.length > 0 && (
         <div className="fixed bottom-0 right-0 z-10">
           <Friends friendsData={friendsData} />
         </div>

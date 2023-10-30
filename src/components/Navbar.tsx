@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <div className="flex z-10 items-center sticky top-0 w-full bg-[#212121] p-3 font-semibold mb-5">
       <div className="mr-auto text-[#E0E0E0]">Steam Tracker</div>
-      <label className="flex gap-2 items-center text-[#E0E0E0] font-normal mr-auto text-sm border border-[#E0E0E0]/30 pl-3 rounded-full">
+      <label className="flex gap-2 items-center text-[#E0E0E0] font-normal mr-auto text-sm border border-[#E0E0E0]/30 pl-3 rounded-md">
         <input
           placeholder="Search Steam ID"
           className="bg-[#212121] outline-none"
@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({
           onKeyDown={handleEnterKeySearch}
         />
         <button
-          className="border border-[#E0E0E0]/30 p-2 flex items-center hover:bg-gray-800 rounded-full"
+          className="border border-l-[#E0E0E0]/30 border-r-0 border-y-0 p-2 flex items-center hover:bg-[#E0E0E0]/20 hover:rounded-md"
           onClick={(e) => handleUserSteamSearch()}
         >
           <div className="w-4">

@@ -29,12 +29,17 @@ const FriendsList: React.FC<FriendsListProps> = ({
     };
   }, [listRef]);
 
+  const unixTimestampToTime = (unixTimestamp: number) => {
+    const date = new Date(unixTimestamp * 1000);
+    return date.toLocaleString();
+  };
+
   return (
     <div
       className="text-xs md:text-base overflow-y-auto h-[250px] w-[160px] md:h-[500px] text-white absolute bottom-16 md:bottom-24 bg-[#424242] right-5 md:right-10 border border-[#E0E0E0] md:w-[250px] rounded-md"
       ref={listRef}
     >
-      <div className=" flex justify-between underline font-semibold sticky top-0 bg-[#212121] p-2 md:p-3">
+      <div className="flex justify-between underline font-semibold sticky top-0 bg-[#212121] p-2 md:p-3">
         Friend List
         <button className="w-4 md:w-5" onClick={toggleFriendsList}>
           <svg
@@ -53,11 +58,22 @@ const FriendsList: React.FC<FriendsListProps> = ({
           </svg>
         </button>
       </div>
-      {friendsData.map((friend) => (
-        <div key={friend.steamid} className="px-2 md:px-3">
-          {friend.steamid}
-        </div>
-      ))}
+      <div className="flex flex-col gap-2 m-2 text-sm">
+        {friendsData.map((friend) => (
+          <div
+            key={friend.steamid}
+            className="px-2 md:px-3 flex flex-col border border-white/30 rounded-md"
+          >
+            <div>
+              <span className="underline">Steam ID:</span> {friend.steamid}
+            </div>
+            <div>
+              <span className="underline">Friend since:</span>{" "}
+              {unixTimestampToTime(friend.friend_since)}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

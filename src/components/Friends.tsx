@@ -17,7 +17,7 @@ const FriendsList: React.FC<FriendsListProps> = ({
   const listRef = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (listRef.current && !listRef.current.contains(e.target)) {
         toggleFriendsList();
       }

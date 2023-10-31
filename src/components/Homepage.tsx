@@ -10,7 +10,7 @@ interface HomepageProps {
 
 const Homepage: React.FC<HomepageProps> = ({ gamesData, achievementsData }) => {
   return (
-    <main className="flex flex-col text-[#E0E0E0] bg-[#424242] min-h-screen">
+    <main className="text-sm md:text-base flex flex-col text-[#E0E0E0] bg-[#424242] min-h-screen">
       <div className="mx-6 mb-8">
         <div className="w-fit rounded-md font-semibold mb-4">
           Recently Played Games
@@ -18,7 +18,7 @@ const Homepage: React.FC<HomepageProps> = ({ gamesData, achievementsData }) => {
         {gamesData ? (
           <GameCardLayout gamesData={gamesData} />
         ) : (
-          <div className="bg-white/30 w-[250px] h-[260px]  rounded-md shadow-lg select-none animate-pulse" />
+          <div className="bg-white/30 w-[180px] h-[190px] md:w-[250px] md:h-[260px]  rounded-md shadow-lg select-none animate-pulse" />
         )}
       </div>
       <div className="mx-6 mb-8">
@@ -26,7 +26,7 @@ const Homepage: React.FC<HomepageProps> = ({ gamesData, achievementsData }) => {
         {achievementsData ? (
           <Achievements achievementsData={achievementsData} />
         ) : (
-          <div className="bg-white/30 w-[250px] h-[260px]  rounded-md shadow-lg select-none animate-pulse" />
+          <div className="bg-white/30 w-[180px] h-[190px] md:w-[250px] md:h-[260px]  rounded-md shadow-lg select-none animate-pulse" />
         )}
       </div>
     </main>

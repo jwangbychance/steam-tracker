@@ -55,9 +55,9 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <div className="flex z-10 items-center sticky top-0 w-full bg-[#212121] p-3 font-semibold mb-5">
+    <div className="text-xs md:text-base flex z-10 items-center sticky top-0 w-full bg-[#212121] p-3 font-semibold mb-5">
       <div className="mr-auto text-[#E0E0E0]">Steam Tracker</div>
-      <label className="flex gap-2 items-center text-[#E0E0E0] font-normal mr-auto text-sm border border-[#E0E0E0]/30 pl-3 rounded-md">
+      <label className="text-xs flex md:gap-2 items-center text-[#E0E0E0] font-normal mr-auto md:text-sm border border-[#E0E0E0]/30 pl-3 rounded-md">
         <input
           placeholder="Search Steam ID"
           className="bg-[#212121] outline-none"
@@ -74,10 +74,12 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
         </button>
       </label>
-      <div className="flex items-center gap-3 rounded-full px-3 py-1 text-sm text-[#E0E0E0]">
+      <div className="flex items-center gap-3 rounded-full px-3 py-1 text-xs md:text-sm text-[#E0E0E0]">
         <img src={playerData?.avatar} className="rounded-full" />
         <div>{playerData?.personaname || "User"}</div>
-        <div className={`${personaStateColor} rounded-full h-3 w-3`} />
+        <div
+          className={`${personaStateColor} rounded-full h-2 w-2 md:h-3 md:w-3`}
+        />
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({
   useEffect(() => {
     switch (playerData?.personastate) {
       case 1:
-        setPersonaStateColor("bg-green-500");
+        setPersonaStateColor("bg-[#629E6A]");
         break;
       case 2:
         setPersonaStateColor("bg-red-700");
@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({
         setPersonaStateColor("bg-sky-600");
         break;
       default:
-        setPersonaStateColor("bg-gray-500");
+        setPersonaStateColor("bg-[#212121] border-[3px] border-gray-500");
         break;
     }
   }, [playerData?.personastate]);
@@ -75,11 +75,13 @@ const Navbar: React.FC<NavbarProps> = ({
         </button>
       </label>
       <div className="flex items-center gap-3 rounded-full px-3 py-1 text-xs md:text-sm text-[#E0E0E0]">
-        <img src={playerData?.avatar} className="rounded-full" />
         <div>{playerData?.personaname || "User"}</div>
-        <div
-          className={`${personaStateColor} rounded-full h-2 w-2 md:h-3 md:w-3`}
-        />
+        <div className={`${playerData ? "relative" : "hidden"}`}>
+          <img src={playerData?.avatar} className="rounded-full" />
+          <div
+            className={`${personaStateColor} rounded-full h-2 w-2 md:h-3 md:w-3 absolute bottom-0 right-0 border border-[#212121]`}
+          />
+        </div>
       </div>
     </div>
   );

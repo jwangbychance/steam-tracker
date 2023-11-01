@@ -93,7 +93,7 @@ export default function Home() {
   };
 
   return (
-    <div className="font-inter relative h-full bg-[#424242] w-full">
+    <div className="font-inter relative h-full bg-[#30343C] w-full">
       <Head>
         <title>Steam Tracker</title>
         <link rel="icon" href="/favicon.ico" />

@@ -36,7 +36,7 @@ const FriendsList: React.FC<FriendsListProps> = ({
 
   return (
     <div
-      className="text-xs md:text-sm overflow-y-auto h-[250px] w-[160px] md:h-[500px] text-white absolute bottom-16 md:bottom-24 bg-[#424242] right-5 md:right-10 border border-[#E0E0E0] md:w-[250px] rounded-md"
+      className="text-xs md:text-sm overflow-y-auto h-[250px] w-[160px] md:h-[500px] text-white absolute bottom-16 md:bottom-24 bg-[#30343C] right-5 md:right-10 border border-[#E0E0E0] md:w-[250px] rounded-md"
       ref={listRef}
     >
       <div className="flex justify-between underline font-semibold sticky top-0 bg-gradient-to-r from-[#2A2F3A] to-[#252930] p-2 md:p-3">

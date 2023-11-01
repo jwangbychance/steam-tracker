@@ -11,7 +11,7 @@ interface AchievementsProps {
 
 const Achievement: React.FC<Achievement> = ({ gameTitle, achievements }) => {
   return (
-    <div className="flex-col min-w-[180px] md:min-w-[250px] border border-gray-300/50 p-3 rounded-md h-fit">
+    <div className="flex-col min-w-[180px] md:min-w-[250px] bg-gradient-to-r from-[#2A2F3A] to-[#252930] p-3 rounded-md h-fit">
       <div className="underline">
         {gameTitle} ({Array.isArray(achievements) ? achievements.length : "0"})
       </div>

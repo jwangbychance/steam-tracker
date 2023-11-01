@@ -17,7 +17,7 @@ const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
   };
 
   return (
-    <div className="p-3 border border-gray-300/50 rounded-md w-[180px] h-[190px] md:w-[250px] md:h-[260px] text-xs md:text-base">
+    <div className="p-3 rounded-md w-[180px] h-[190px] md:w-[250px] md:h-[260px] text-xs md:text-base bg-gradient-to-r from-[#2A2F3A] to-[#252930]">
       <div className="flex items-center gap-3 mb-2 md:mb-5">
         <img
           src={`http://media.steampowered.com/steamcommunity/public/images/apps/${gameData.appid}/${gameData.img_icon_url}.jpg`}
@@ -31,7 +31,7 @@ const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
       <div>
         Total playtime: {(gameData.playtime_forever / 60).toFixed(2)} hrs
       </div>
-      <div className="border border-[#212121] my-3 md:my-5" />
+      <div className="border border-[#24252A] my-3 md:my-5" />
       <div className="flex items-center gap-3 mb-1 md:mb-0">
         <WindowsOS />
         playtime: {displayPlaytimeHours(gameData.playtime_windows_forever)} hrs

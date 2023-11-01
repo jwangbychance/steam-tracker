@@ -10,7 +10,7 @@ interface HomepageProps {
 
 const Homepage: React.FC<HomepageProps> = ({ gamesData, achievementsData }) => {
   return (
-    <main className="text-sm md:text-base flex flex-col text-[#E0E0E0] bg-[#424242] min-h-screen">
+    <main className="text-sm md:text-base flex flex-col text-[#E0E0E0] bg-[#30343C] min-h-screen">
       <div className="mx-6 mb-8">
         <div className="w-fit rounded-md font-semibold mb-4">
           Recently Played Games

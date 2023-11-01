@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <div className="text-xs md:text-base flex z-10 items-center sticky top-0 w-full bg-gradient-to-r from-[#2A2F3A] to-[#252930] p-3 font-semibold mb-5">
       <div className="mr-auto text-[#E0E0E0]">Steam Tracker</div>
-      <label className="bg-[#24252A] text-xs flex md:gap-2 items-center text-[#E0E0E0] font-normal mr-auto md:text-sm border border-[#E0E0E0]/30 pl-3 rounded-md">
+      <label className="bg-[#24252A] text-xs flex md:gap-2 items-center text-[#E0E0E0] font-normal mr-auto md:text-sm pl-3 rounded-md">
         <input
           placeholder="Search Steam ID"
           className="bg-transparent outline-none"

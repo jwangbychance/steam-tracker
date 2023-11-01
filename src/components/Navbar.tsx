@@ -55,18 +55,18 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <div className="text-xs md:text-base flex z-10 items-center sticky top-0 w-full bg-[#212121] p-3 font-semibold mb-5">
+    <div className="text-xs md:text-base flex z-10 items-center sticky top-0 w-full bg-gradient-to-r from-[#2A2F3A] to-[#252930] p-3 font-semibold mb-5">
       <div className="mr-auto text-[#E0E0E0]">Steam Tracker</div>
-      <label className="text-xs flex md:gap-2 items-center text-[#E0E0E0] font-normal mr-auto md:text-sm border border-[#E0E0E0]/30 pl-3 rounded-md">
+      <label className="bg-[#24252A] text-xs flex md:gap-2 items-center text-[#E0E0E0] font-normal mr-auto md:text-sm border border-[#E0E0E0]/30 pl-3 rounded-md">
         <input
           placeholder="Search Steam ID"
-          className="bg-[#212121] outline-none"
+          className="bg-transparent outline-none"
           value={userSteamId}
           onChange={(e) => setUserSteamId(e.target.value)}
           onKeyDown={handleEnterKeySearch}
         />
         <button
-          className="border border-l-[#E0E0E0]/30 border-r-0 border-y-0 p-2 flex items-center hover:bg-[#E0E0E0]/20 hover:rounded-md"
+          className="border border-l-0 border-r-0 border-y-0 p-2 flex items-center hover:bg-[#E0E0E0]/20 hover:rounded-md"
           onClick={(e) => handleUserSteamSearch()}
         >
           <div className="w-4">

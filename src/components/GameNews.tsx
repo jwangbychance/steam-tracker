@@ -15,7 +15,7 @@ const GameNewsCard: React.FC<GameNewsCardProps> = ({ gameTitle, gameNews }) => {
       <div className="underline truncate" title={gameTitle}>
         {gameTitle}
       </div>
-      {gameNews ? (
+      {gameNews.newsitems.length > 0 ? (
         gameNews.newsitems.map((news, i) => (
           <a
             key={i}
@@ -28,7 +28,7 @@ const GameNewsCard: React.FC<GameNewsCardProps> = ({ gameTitle, gameNews }) => {
           </a>
         ))
       ) : (
-        <div>No Game News</div>
+        <div>No game news</div>
       )}
     </div>
   );

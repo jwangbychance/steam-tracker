@@ -16,7 +16,7 @@ const GameNewsCard: React.FC<GameNewsCardProps> = ({ gameTitle, gameNews }) => {
       <div className="underline">{gameTitle}</div>
       {gameNews ? (
         gameNews.newsitems.map((news, i) => (
-          <a key={i} href={news.url} className="mb-2">
+          <a key={i} href={news.url} className="truncate" title={news.title}>
             {news.title}
           </a>
         ))

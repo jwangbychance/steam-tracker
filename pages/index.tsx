@@ -6,6 +6,7 @@ import {
   fetchGamesData,
   fetchUserAchievements,
   fetchUserFriends,
+  fetchGameNews,
 } from "../src/utils/api";
 import Homepage from "../src/components/Homepage";
 import Footer from "../src/components/Footer";
@@ -16,6 +17,7 @@ import { ISteamAchievements } from "../src/interfaces/ISteamAchievements";
 import usePrevious from "../src/hooks/usePrevious";
 import Friends from "../src/components/Friends";
 import { ISteamFriends } from "../src/interfaces/ISteamFriends";
+import { ISteamGameNews } from "../src/interfaces/ISteamGameNews";
 
 export default function Home() {
   const [playerData, setPlayerData] = useState<ISteamUser>(null);
@@ -24,6 +26,9 @@ export default function Home() {
     [name: string]: ISteamAchievements;
   }>(null);
   const [friendsData, setFriendsData] = useState<ISteamFriends[]>(null);
+  const [gameNewsData, setGameNewsData] = useState<{
+    [name: string]: ISteamGameNews;
+  }>(null);
   const prevPlayerData = usePrevious(playerData?.steamid);
 
   useEffect(() => {
@@ -71,7 +76,37 @@ export default function Home() {
       }
     };
 
+    const fetchGameNewsData = async () => {
+      if (gamesData) {
+        try {
+          const dataPromises = gamesData.map(async (gameData) => {
+            try {
+              const data = await fetchGameNews(gameData.appid);
+              return [gameData.name, data];
+            } catch (err: unknown) {
+              console.error(err);
+              return [gameData.name, null];
+            }
+          });
+
+          const dataResults = (await Promise.allSettled(dataPromises)) as {
+            status: "fulfilled" | "rejected";
+            value: ISteamGameNews[];
+          }[];
+
+          const fulfilledResults = dataResults
+            .filter((result) => result.status === "fulfilled")
+            .map((data) => data.value);
+
+          setGameNewsData(Object.fromEntries(fulfilledResults));
+        } catch (err: unknown) {
+          console.error(err);
+        }
+      }
+    };
+
     fetchAchievementsData();
+    fetchGameNewsData();
   }, [gamesData]);
 
   const getUserSteamData = async (userSteamId: string) => {
@@ -105,7 +140,11 @@ export default function Home() {
         getUserSteamRecentGames={getUserSteamRecentGames}
       />
 
-      <Homepage gamesData={gamesData} achievementsData={achievementsData} />
+      <Homepage
+        gamesData={gamesData}
+        achievementsData={achievementsData}
+        gameNewsData={gameNewsData}
+      />
 
       {friendsData && friendsData.length > 0 && (
         <div className="fixed bottom-0 right-0 z-10">

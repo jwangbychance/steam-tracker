@@ -30,8 +30,13 @@ const Achievements: React.FC<AchievementsProps> = ({ achievementsData }) => {
   return (
     <div className="overflow-x-auto mb-8">
       <div className="flex gap-8 mb-3">
-        {Object.keys(achievementsData).map((game) => (
-          <Achievement gameTitle={game} achievements={achievementsData[game]} />
+        {Object.keys(achievementsData).map((game, i) => (
+          <div key={i}>
+            <Achievement
+              gameTitle={game}
+              achievements={achievementsData[game]}
+            />
+          </div>
         ))}
       </div>
     </div>

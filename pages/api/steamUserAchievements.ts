@@ -10,7 +10,7 @@ export default async function handler(
   res: NextApiResponse<ISteamAchievements>
 ) {
   const { appId } = req.query;
-  const gonerSteamGames = `http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=${steamKey}&steamid=76561198028760616`;
-  const response = await axios.get(gonerSteamGames);
+  const steamAchievementsURL = `http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=${steamKey}&steamid=76561198028760616`;
+  const response = await axios.get(steamAchievementsURL);
   res.status(200).json(response.data.playerstats.achievements);
 }

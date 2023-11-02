@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({
         setPersonaStateColor("bg-sky-600");
         break;
       default:
-        setPersonaStateColor("bg-[#212121] border-[3px] border-gray-500");
+        setPersonaStateColor("bg-[#252930] border-[3px] border-gray-500");
         break;
     }
   }, [playerData?.personastate]);

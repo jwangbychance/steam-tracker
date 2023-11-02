@@ -23,7 +23,9 @@ const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
           src={`http://media.steampowered.com/steamcommunity/public/images/apps/${gameData.appid}/${gameData.img_icon_url}.jpg`}
           className="rounded-sm"
         />
-        <div className="underline truncate">{gameData.name}</div>
+        <div className="underline truncate" title={gameData.name}>
+          {gameData.name}
+        </div>
       </div>
       <div>
         2 weeks playtime: {(gameData.playtime_2weeks / 60).toFixed(2)} hrs

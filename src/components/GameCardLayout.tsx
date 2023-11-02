@@ -54,7 +54,7 @@ const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
 
 const GameCardLayout: React.FC<GameCardLayoutProps> = ({ gamesData }) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-[#252930] scrollbar-track-[#30343C]">
       <div className="inline-flex gap-8 mb-3">
         {gamesData.map((game) => (
           <GameCard gameData={game} key={game.appid} />

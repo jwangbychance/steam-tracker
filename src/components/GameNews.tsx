@@ -36,7 +36,7 @@ const GameNewsCard: React.FC<GameNewsCardProps> = ({ gameTitle, gameNews }) => {
 
 const GameNews: React.FC<GameNewsProps> = ({ gameNewsData }) => {
   return (
-    <div className="overflow-x-auto mb-8">
+    <div className="overflow-x-auto mb-8  scrollbar-thin scrollbar-thumb-[#252930] scrollbar-track-[#30343C]">
       <div className="flex gap-8 mb-3">
         {Object.keys(gameNewsData).map((game, i) => (
           <div key={i}>

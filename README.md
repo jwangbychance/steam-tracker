@@ -7,7 +7,25 @@ This is a [Next.js](https://nextjs.org/) project created with [`create-next-app`
 - [Next.js](https://nextjs.org/) - The React framework for building modern web applications.
 - [React](https://react.dev/) - A JavaScript library for building user interfaces.
 
+## Environment Variables
+
+The project requires a
+
 ## Getting Started
+
+Clone the repository:
+
+```script
+git clone https://github.com/jwangbychance/steam-tracker.git
+```
+
+Once the repository has been cloned, create a `.env` variable file using the `.env.example` provided as a template.
+
+The project relies on the following environment variable for configuration:
+
+- `STEAM_WEB_API`: This variable represents the Steam Web API key for authentication and access to the Steam API services. To use certain features of the application, you need to obtain a Steam Web API key from the [Steam Developer Console](https://steamcommunity.com/dev/apikey).
+
+## Installation
 
 First, run the development server:
 

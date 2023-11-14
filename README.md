@@ -2,6 +2,11 @@
 
 This is a [Next.js](https://nextjs.org/) project created with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - The React framework for building modern web applications.
+- [React](https://react.dev/) - A JavaScript library for building user interfaces.
+
 ## Getting Started
 
 First, run the development server:

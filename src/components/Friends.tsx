@@ -58,7 +58,7 @@ const FriendsList: React.FC<FriendsListProps> = ({
           </svg>
         </button>
       </div>
-      <div className="flex flex-col gap-2 m-2 text-sm">
+      <div className="flex flex-col gap-2 m-2 text-xs md:text-sm">
         {friendsData.map((friend) => (
           <div
             key={friend.steamid}

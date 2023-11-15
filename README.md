@@ -7,10 +7,6 @@ This is a [Next.js](https://nextjs.org/) project created with [`create-next-app`
 - [Next.js](https://nextjs.org/) - The React framework for building modern web applications.
 - [React](https://react.dev/) - A JavaScript library for building user interfaces.
 
-## Environment Variables
-
-The project requires a
-
 ## Getting Started
 
 Clone the repository:

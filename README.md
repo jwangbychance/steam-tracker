@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project created with [`create-next-app`
 
 Steam Tracker is a web application that leverages the Steam Web API to provide users with the ability to search for Steam users on the Steam Game Platform and track various aspects of their gaming activities. The application allows users to explore a Steam user's recently played games, achievements, and relevant game news.
 
+![image](https://github.com/jwangbychance/steam-tracker/assets/99638105/c998eabf-b05f-4961-9f38-32a45ef9b7d3)
+
 ## Features
 
 ### 1. User Search

@@ -11,7 +11,7 @@ interface GameNewsProps {
 
 const GameNewsCard: React.FC<GameNewsCardProps> = ({ gameTitle, gameNews }) => {
   return (
-    <div className="flex flex-col min-w-[180px] md:min-w-[250px] max-w-[180px] md:max-w-[250px] bg-gradient-to-r from-[#2A2F3A] to-[#252930] p-3 rounded-md h-fit">
+    <div className="flex flex-col min-w-[180px] md:min-w-[250px] max-w-[180px] md:max-w-[250px] bg-gradient-to-r from-[#2A2F3A] to-[#252930] p-3 rounded-md h-fit border border-white/50">
       <div className="underline truncate" title={gameTitle}>
         {gameTitle}
       </div>

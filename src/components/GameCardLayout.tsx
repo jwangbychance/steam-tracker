@@ -17,7 +17,7 @@ const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
   };
 
   return (
-    <div className="p-3 rounded-md w-[180px] h-[190px] md:w-[250px] md:h-[260px] text-xs md:text-base bg-gradient-to-r from-[#2A2F3A] to-[#252930]">
+    <div className="p-3 rounded-md w-[180px] h-[190px] md:w-[250px] md:h-[260px] text-xs md:text-base bg-gradient-to-r from-[#2A2F3A] to-[#252930] border border-white/50">
       <div className="flex items-center gap-3 mb-2 md:mb-5">
         <img
           src={`http://media.steampowered.com/steamcommunity/public/images/apps/${gameData.appid}/${gameData.img_icon_url}.jpg`}

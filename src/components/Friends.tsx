@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ISteamFriends } from "../interfaces/ISteamFriends";
+import { fetchUserData } from "../utils/api";
 
 interface FriendsProps {
   friendsData: ISteamFriends[];
@@ -9,6 +10,48 @@ interface FriendsListProps {
   friendsData: ISteamFriends[];
   toggleFriendsList: () => void;
 }
+
+interface FriendProps {
+  friendData: ISteamFriends;
+}
+
+const Friend: React.FC<FriendProps> = ({ friendData }) => {
+  const [friendName, setFriendName] = useState("");
+
+  const unixTimestampToTime = (unixTimestamp: number) => {
+    const date = new Date(unixTimestamp * 1000);
+    return date.toLocaleString();
+  };
+
+  useEffect(() => {
+    const fetchFriendName = async (steamId: string) => {
+      try {
+        const playerData = await fetchUserData(steamId);
+        setFriendName(playerData.personaname);
+      } catch (err: unknown) {
+        console.error(err);
+      }
+    };
+
+    fetchFriendName(friendData.steamid);
+  }, [friendData]);
+
+  return (
+    <div
+      key={friendData.steamid}
+      className="py-1 px-2 md:px-3 flex flex-col border border-white/30 rounded-md"
+    >
+      <div className="font-semibold">{friendName}</div>
+      <div>
+        <span className="underline">Steam ID:</span> {friendData.steamid}
+      </div>
+      <div>
+        <span className="underline">Friend since:</span>{" "}
+        {unixTimestampToTime(friendData.friend_since)}
+      </div>
+    </div>
+  );
+};
 
 const FriendsList: React.FC<FriendsListProps> = ({
   friendsData,
@@ -28,11 +71,6 @@ const FriendsList: React.FC<FriendsListProps> = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [listRef]);
-
-  const unixTimestampToTime = (unixTimestamp: number) => {
-    const date = new Date(unixTimestamp * 1000);
-    return date.toLocaleString();
-  };
 
   return (
     <div
@@ -60,18 +98,7 @@ const FriendsList: React.FC<FriendsListProps> = ({
       </div>
       <div className="flex flex-col gap-2 m-2 text-xs md:text-sm">
         {friendsData.map((friend) => (
-          <div
-            key={friend.steamid}
-            className="px-2 md:px-3 flex flex-col border border-white/30 rounded-md"
-          >
-            <div>
-              <span className="underline">Steam ID:</span> {friend.steamid}
-            </div>
-            <div>
-              <span className="underline">Friend since:</span>{" "}
-              {unixTimestampToTime(friend.friend_since)}
-            </div>
-          </div>
+          <Friend friendData={friend} />
         ))}
       </div>
     </div>

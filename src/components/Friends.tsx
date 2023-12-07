@@ -112,6 +112,10 @@ const Friends: React.FC<FriendsProps> = ({ friendsData }) => {
     setIsOpen((prev) => !prev);
   };
 
+  if (!friendsData) {
+    return null;
+  }
+
   return (
     <>
       <button

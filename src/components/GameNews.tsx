@@ -35,6 +35,10 @@ const GameNewsCard: React.FC<GameNewsCardProps> = ({ gameTitle, gameNews }) => {
 };
 
 const GameNews: React.FC<GameNewsProps> = ({ gameNewsData }) => {
+  if (!gameNewsData) {
+    return null;
+  }
+
   return (
     <div className="overflow-x-auto mb-8  scrollbar-thin scrollbar-thumb-[#252930] scrollbar-track-[#30343C]">
       <div className="flex gap-8 mb-3">

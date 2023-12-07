@@ -53,6 +53,10 @@ const GameCard: React.FC<GameCardProps> = ({ gameData }) => {
 };
 
 const GameCardLayout: React.FC<GameCardLayoutProps> = ({ gamesData }) => {
+  if (!gamesData) {
+    return null;
+  }
+
   return (
     <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-[#252930] scrollbar-track-[#30343C]">
       <div className="inline-flex gap-8 mb-3">

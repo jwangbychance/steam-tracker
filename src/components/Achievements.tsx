@@ -34,6 +34,10 @@ const Achievement: React.FC<Achievement> = ({ gameTitle, achievements }) => {
 };
 
 const Achievements: React.FC<AchievementsProps> = ({ achievementsData }) => {
+  if (!achievementsData) {
+    return null;
+  }
+
   return (
     <div className="overflow-x-auto mb-8  scrollbar-thin scrollbar-thumb-[#252930] scrollbar-track-[#30343C]">
       <div className="flex gap-8 mb-3">

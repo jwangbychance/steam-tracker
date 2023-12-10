@@ -98,7 +98,9 @@ const FriendsList: React.FC<FriendsListProps> = ({
       </div>
       <div className="flex flex-col gap-2 m-2 text-xs md:text-sm">
         {friendsData.map((friend) => (
-          <Friend friendData={friend} />
+          <div key={friend.steamid}>
+            <Friend friendData={friend} />
+          </div>
         ))}
       </div>
     </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 
 describe("steam user achievements api call tests", () => {
   afterEach(() => {
-    jest.clearAllMocks;
+    jest.clearAllMocks();
   });
 
   describe("get user steam achievements", () => {

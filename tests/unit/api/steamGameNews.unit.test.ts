@@ -3,7 +3,7 @@ import axios from "axios";
 
 describe("steam game news api call tests", () => {
   afterEach(() => {
-    jest.clearAllMocks;
+    jest.clearAllMocks();
   });
 
   describe("get steam news", () => {

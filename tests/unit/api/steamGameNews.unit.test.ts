@@ -1,3 +1,4 @@
+import { ISteamGameNews } from "../../../src/interfaces/ISteamGameNews";
 import { fetchGameNews } from "../../../src/utils/api";
 import axios from "axios";
 
@@ -17,22 +18,24 @@ describe("steam game news api call tests", () => {
     });
 
     it("should return steam game news data", async () => {
-      const mockResponseData = {
+      const mockResponseData: ISteamGameNews = {
         appid: 1337520,
         count: 1,
-        newsitems: {
-          appid: 1337520,
-          author: "some_author",
-          contents: "some_contents",
-          date: 111,
-          feed_type: 111,
-          feedlabel: "some_feedlabel",
-          feedname: "some_feedname",
-          gid: "some_gid",
-          is_external_url: true,
-          title: "some_title",
-          url: "some_url",
-        },
+        newsitems: [
+          {
+            appid: 1337520,
+            author: "some_author",
+            contents: "some_contents",
+            date: 111,
+            feed_type: 111,
+            feedlabel: "some_feedlabel",
+            feedname: "some_feedname",
+            gid: "some_gid",
+            is_external_url: true,
+            title: "some_title",
+            url: "some_url",
+          },
+        ],
       };
 
       axiosGetSpy.mockResolvedValueOnce({ data: mockResponseData });

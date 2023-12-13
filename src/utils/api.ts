@@ -10,7 +10,7 @@ export const fetchUserData = async (steamId: string) => {
     const response = await axios.get("/api/steamUserSummary", {
       params: { steamId },
     });
-    const userData: ISteamUser = response.data.response.players[0];
+    const userData: ISteamUser = response.data;
     return userData;
   } catch (err: unknown) {
     throw err;

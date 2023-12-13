@@ -12,5 +12,5 @@ export default async function handler(
   const { steamId } = req.query;
   const steamProfileURL = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamKey}&steamids=${steamId}`;
   const response = await axios.get(steamProfileURL);
-  res.status(200).json(response.data);
+  res.status(200).json(response.data.response.players[0]);
 }

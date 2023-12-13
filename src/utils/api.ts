@@ -22,7 +22,7 @@ export const fetchGamesData = async (steamId: string) => {
     const response = await axios.get("/api/steamRecentGames", {
       params: { steamId },
     });
-    const gamesData: ISteamGame[] = response.data.response.games;
+    const gamesData: ISteamGame[] = response.data;
     return gamesData;
   } catch (err: unknown) {
     throw err;

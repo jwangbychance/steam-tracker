@@ -12,5 +12,5 @@ export default async function handler(
   const { steamId } = req.query;
   const steamGamesURL = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamKey}&steamid=${steamId}&format=json`;
   const response = await axios.get(steamGamesURL);
-  res.status(200).json(response.data);
+  res.status(200).json(response.data.response.games);
 }

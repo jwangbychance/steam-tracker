@@ -12,5 +12,5 @@ export default async function handler(
   const { steamId } = req.query;
   const steamUserFriendsURL = `http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=${steamKey}&steamid=${steamId}&relationship=friend`;
   const response = await axios.get(steamUserFriendsURL);
-  res.status(200).json(response.data);
+  res.status(200).json(response.data.friendslist.friends);
 }

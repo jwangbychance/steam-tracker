@@ -46,7 +46,7 @@ export const fetchUserFriends = async (steamId: string) => {
     const response = await axios.get("/api/steamUserFriends", {
       params: { steamId },
     });
-    const friendsData: ISteamFriends[] = response.data.friendslist.friends;
+    const friendsData: ISteamFriends[] = response.data;
     return friendsData;
   } catch (err: unknown) {
     throw err;

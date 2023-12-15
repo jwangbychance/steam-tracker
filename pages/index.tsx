@@ -33,6 +33,7 @@ export default function Home() {
 
   useEffect(() => {
     if (prevPlayerData !== playerData?.steamid) {
+      setGameNewsData(null);
       setAchievementsData(null);
       const fetchFriendsData = async () => {
         try {

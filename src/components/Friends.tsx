@@ -59,18 +59,18 @@ const FriendsList: React.FC<FriendsListProps> = ({
 }) => {
   const listRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (listRef.current && !listRef.current.contains(e.target)) {
-        toggleFriendsList();
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (e: MouseEvent) => {
+  //     if (listRef.current && !listRef.current.contains(e.target)) {
+  //       toggleFriendsList();
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [listRef]);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [listRef]);
 
   return (
     <div
@@ -121,17 +121,17 @@ const Friends: React.FC<FriendsProps> = ({ friendsData }) => {
   return (
     <>
       <button
-        className="text-xs md:text-base relative text-black font-semibold fixed bottom-5 md:bottom-10 right-5 md:right-10 z-10 rounded-full bg-white px-6 py-2"
+        className="text-xs md:text-base relative text-black font-semibold bottom-5 md:bottom-10 right-5 md:right-10 z-10 rounded-full bg-white px-6 py-2"
         onClick={toggleFriendsList}
       >
         Friends
       </button>
-      {isOpen && (
+      <div className={`${isOpen ? "relative" : "hidden"}`}>
         <FriendsList
           friendsData={friendsData}
           toggleFriendsList={toggleFriendsList}
         />
-      )}
+      </div>
     </>
   );
 };
